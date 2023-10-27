@@ -30,13 +30,14 @@ public class Registro extends javax.swing.JFrame {
         btnRegistrar1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         informacion = new javax.swing.JTextArea();
-        btnModificar = new javax.swing.JButton();
+        btnConectividad = new javax.swing.JButton();
         btnConsultar1 = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnVerificar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,10 +84,10 @@ public class Registro extends javax.swing.JFrame {
         informacion.setRows(5);
         jScrollPane1.setViewportView(informacion);
 
-        btnModificar.setText("modicar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+        btnConectividad.setText("ver Conectividad");
+        btnConectividad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
+                btnConectividadActionPerformed(evt);
             }
         });
 
@@ -120,12 +121,19 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
+        btnModificar.setText("modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,22 +150,29 @@ public class Registro extends javax.swing.JFrame {
                             .addComponent(btnRegistrar1)
                             .addComponent(btnActualizar)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(btnConsultar1)
-                                .addGap(18, 18, 18)
+                                .addGap(33, 33, 33)
                                 .addComponent(btnVerificar)
-                                .addGap(47, 47, 47)
+                                .addGap(38, 38, 38)
                                 .addComponent(btnEliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(49, 49, 49)
                                 .addComponent(btnModificar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscar)
-                            .addComponent(jLabel4)
-                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(58, 58, 58))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnBuscar)
+                                    .addComponent(jLabel4)
+                                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addComponent(btnConectividad)))))
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,6 +208,7 @@ public class Registro extends javax.swing.JFrame {
                     .addComponent(btnConsultar1)
                     .addComponent(btnVerificar)
                     .addComponent(btnEliminar)
+                    .addComponent(btnConectividad)
                     .addComponent(btnModificar))
                 .addGap(42, 42, 42))
         );
@@ -238,7 +254,7 @@ try {
 
     }//GEN-LAST:event_btnRegistrar1ActionPerformed
        //SI LA BD TIENE DATOS 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+    private void btnConectividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectividadActionPerformed
  try {
     Connection conexion = conectar.conectar();
     // Seleccionar tabla
@@ -252,7 +268,7 @@ try {
   } catch (Exception e) {
     JOptionPane.showMessageDialog(null, e.getMessage());
   }
-    }//GEN-LAST:event_btnModificarActionPerformed
+    }//GEN-LAST:event_btnConectividadActionPerformed
 
     private void btnConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultar1ActionPerformed
       
@@ -310,8 +326,41 @@ try {
     }//GEN-LAST:event_btnVerificarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        try {
+            Connection conexion = conectar.conectar();
+            PreparedStatement buscar = conexion.prepareStatement("SELECT * FROM empleados  where id = ?");
+            buscar.setString(1, txtBuscar.getText().trim());
+            ResultSet consulta = buscar.executeQuery();
+            while (consulta.next()) {
+                txtNombre.setText(consulta.getString("nombre"));
+                txtTelefono.setText(consulta.getString("telefono"));
+                cmbFacultad.setSelectedItem(consulta.getString("profesion"));
+            }
+                    JOptionPane.showMessageDialog(null, "Se encontraron los Datos");
+        } catch (Exception e) {
+            
+
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+       try{
+           Connection conexion = conectar.conectar();
+           String id = txtBuscar.getText().trim();
+           PreparedStatement modificar = conexion.prepareStatement("UPDATE empleados SET nombre=?,telefono=?,profesion=? where id=?");
+           modificar.setString(1, txtNombre.getText().trim());
+           modificar.setString(2, txtTelefono.getText().trim());
+           modificar.setString(3, cmbFacultad.getSelectedItem().toString());
+           modificar.setString(4, txtBuscar.getText().trim()); // Asigna el valor de id con setString
+           modificar.executeUpdate();
+           
+             JOptionPane.showMessageDialog(null, "El registro del id" + id + "se ha modificado correctamente");
+
+           
+       }catch(Exception e){
+                 JOptionPane.showMessageDialog(null, "error" + e);
+       }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
 
     public static void main(String args[]) {
@@ -326,6 +375,7 @@ try {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnConectividad;
     private javax.swing.JButton btnConsultar1;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
